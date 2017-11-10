@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
         exit(EXIT_FAILURE);
     }
 
-    infd = open(argv[1], O_RDONLY);
+    infd = open(argv[1], O_RDONLY | O_SYNC);
     if (infd == -1) {
         ERR_EXIT("open src error");
     }
@@ -34,6 +34,7 @@ int main(int argc, char **argv) {
     memset(buff, 0, 1024);
     int nread = 0;
     while ((nread = read(infd, buff, 1024)) > 0) {
+        printf("the character of the first byte of the buffer is %c\n", buff[0]);
         write(outfd, buff, nread);
     }
     close(infd);

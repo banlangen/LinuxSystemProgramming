@@ -1,8 +1,8 @@
 .PHONY: all
-CC = gcc 
+CC = g++
 FLAGS = -Wall -g
-all : 01cp
-01cp: 01cp.c
+all : listdir 
+listdir: listdir.cpp
 	$(CC) $(FLAGS)  $< -o $@
 .PHONY: clean
 clean :
